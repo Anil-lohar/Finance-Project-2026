@@ -8,16 +8,18 @@ interface Props {
   onPortfolioCreate: (e: SyntheticEvent) => void;
 }
 
-const CardList: React.FC<Props> = ({searchResults, onPortfolioCreate}: Props): JSX.Element => {
+const CardList: React.FC<Props> = ({ searchResults, onPortfolioCreate }: Props): JSX.Element => {
   return (
     <>
-        {searchResults.length > 0 ? (
-          searchResults.map(result =>{
-            return <Card id={result.symbol} key={result.symbol} searchResult={result} onPortfolioCreate={onPortfolioCreate} />
-          })
-        ) : (
-          <h1>No results</h1>
-        )}
+      {searchResults.length > 0 ? (
+        searchResults.map(result => {
+          return <Card id={result.symbol} key={result.symbol} searchResult={result} onPortfolioCreate={onPortfolioCreate} />
+        })
+      ) : (
+        <p className="mb-3 mt-3 text-xl font-semibold text-center md:text-xl">
+          No results!
+        </p>
+      )}
     </>
   )
 }
