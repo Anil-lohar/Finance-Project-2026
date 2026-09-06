@@ -35,10 +35,16 @@ function App() {
 
   }
 
+  const onPortfolioDelete = (e: any) => {
+    e.preventDefault();
+    const updatedPortfolio = portfolioValues.filter(value => value !== e.target[0].value);
+    setPortfolioValues(updatedPortfolio);
+  }
+
   return (
     <div className="App">
       <Search onSearchSubmit={onSearchSubmit} search={search} handleSearchChange={handleSearchChange} />
-      <ListPortfolio portfolioValues={portfolioValues} />
+      <ListPortfolio portfolioValues={portfolioValues} portfolioDelete={onPortfolioDelete} />
       <CardList searchResults={searchResult} onPortfolioCreate={onPortfolioCreate} />
       {serverError && <h1>{serverError}</h1>}
     </div>
