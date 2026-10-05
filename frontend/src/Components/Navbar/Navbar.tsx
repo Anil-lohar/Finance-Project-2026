@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from './logo.png'
+import { Link } from 'react-router-dom'
 
 interface Props {}
 
@@ -16,36 +17,37 @@ const Navbar = (props: Props) => {
     <nav className="relative container mx-auto p-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-20">
-          <a href="/">
+          <Link to="/">
             <img src={logo} alt="" />
-          </a>
+          </Link>
           <div className="hidden font-bold lg:flex">
-            <a href="/search" className="text-black hover:text-darkBlue">
+            <Link to="/search" className="text-black hover:text-darkBlue">
               Search
-            </a>
+            </Link>
           </div>
         </div>
         {isLoggedIn() ? (
           <div className="hidden lg:flex items-center space-x-6 text-back">
             <div className="hover:text-darkBlue">Welcome, {user?.userName}</div>
-            <a
+            <Link
+              to="/logout"
               onClick={logout}
               className="px-8 py-3 font-bold rounded text-white bg-lightGreen hover:opacity-70"
             >
               Logout
-            </a>
+            </Link>
           </div>
         ) : (
           <div className="hidden lg:flex items-center space-x-6 text-back">
-            <a href="/login" className="hover:text-darkBlue">
+            <Link to="/login" className="hover:text-darkBlue">
               Login
-            </a>
-            <a
-              href="/register"
+            </Link>
+            <Link
+              to="/register"
               className="px-8 py-3 font-bold rounded text-white bg-lightGreen hover:opacity-70"
             >
               Signup
-            </a>
+            </Link>
           </div>
         )}
       </div>
